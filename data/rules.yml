@@ -2,12 +2,32 @@ version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Active form
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: greet
+  - action: utter_presentation
+  - action: pizza_form
+  - active_loop: pizza_form
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Submit form
+  steps:
+    condition:
+    - active_loop: pizza_form
+    steps:
+    - action: pizza_form
+    - active_loop: null
+    - slot_was_set:
+      - request_slot: null
+    - action: post_form
+
+- rule: Handle interruption in form
+  condition:
+  - active_loop: pizza_form
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+  # return to form
+  - action: pizza_form
+  - active_loop: pizza_form
+
+#TODO: make rule to handle any deviation

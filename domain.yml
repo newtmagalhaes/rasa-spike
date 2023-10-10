@@ -5,9 +5,44 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
+  - give_pizza_size
+  - give_pizza_flavour
   - bot_challenge
+
+entities:
+  # - pizza_size
+  - pizza_flavour
+
+slots:
+  pizza_size:
+    type: categorical
+    values:
+      - small
+      - medium
+      - large
+    influence_conversation: true
+    mappings:
+      conditions:
+      - active_loop: pizza_form
+    # - type: custom
+    #   action: action_ask_pizza_size
+    # - type: from_entity
+    #   entities: pizza_size
+
+  pizza_flavour:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entities: pizza_flavour
+      conditions:
+      - active_loop: pizza_form
+
+form:
+  pizza_form:
+    required_slots:
+    - pizza_size
+    - pizza_flavour
 
 responses:
   utter_greet:
