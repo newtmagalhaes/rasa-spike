@@ -4,88 +4,69 @@ nlu:
 - intent: greet
   examples: |
     - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - olá
+    - oi mano
+    - e aí
+    - bom dia
+    - boa tarde
+    - boa noite
+    - dia
+    - vamos lá
+    - eae cara
+    - bomdia
+    - salve
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - tchau
+    - adeus
+    - até mais tarde
+    - até mais
+    - tchauzinho
+    - tenha um bom dia
+    - até breve
+    - até logo
 
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - sim
+    - s
+    - certamente
+    - claro
+    - parece bom
+    - correto
 
 - intent: deny
   examples: |
-    - no
+    - não
     - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - nunca
+    - Eu não acho
+    - não gosto disso
+    - não brinca
+    - certamente não
+    - discordo
 
-- intent: mood_great
+- intent: request_pizza
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - quero pedir uma pizza
 
-- intent: mood_unhappy
+- intent: give_pizza_size
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - [small](pizza_size)
+    - [medium](pizza_size)
+    - [large](pizza_size)
+
+- intent: give_pizza_flavour
+  examples: |
+    - eu quero uma pizza de [marguerita](pizza_flavour)
+    - [pepperoni](pizza_flavour)
+    - pizza de [frango com requeijão](pizza_flavour)
+    - eu quero uma pizza [metade frango e metade portuguesa](pizza_flavour)
 
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - você é um robô?
+    - você é humano?
+    - estou falando com um bot?
+    - estou falando com um humano?

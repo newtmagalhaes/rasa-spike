@@ -1,44 +1,39 @@
-version: "3.1"
+version: '3.1'
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - give_pizza_size
-  - give_pizza_flavour
-  - bot_challenge
+- affirm
+- bot_challenge
+- deny
+- give_pizza_flavour
+- give_pizza_size
+- goodbye
+- greet
+- request_pizza
 
 entities:
-  # - pizza_size
-  - pizza_flavour
+- pizza_size
+- pizza_flavour
 
 slots:
   pizza_size:
-    type: categorical
-    values:
-      - small
-      - medium
-      - large
+    type: text
     influence_conversation: true
     mappings:
+    - type: from_entity
+      entity: pizza_size
       conditions:
       - active_loop: pizza_form
-    # - type: custom
-    #   action: action_ask_pizza_size
-    # - type: from_entity
-    #   entities: pizza_size
 
   pizza_flavour:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
-      entities: pizza_flavour
+      entity: pizza_flavour
       conditions:
       - active_loop: pizza_form
 
-form:
+forms:
   pizza_form:
     required_slots:
     - pizza_size
@@ -46,23 +41,31 @@ form:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: Olá! Eu estou aqui para registrar seu pedido.
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_ask_pizza_flavour:
+  - text: Qual o sabor que gostaria em sua pizza?
+
+  utter_submit:
+  - text: Seu pedido foi enviado!
+
+  utter_pizza_slots:
+  - text: Sua pizza {pizza_size} de sabor {pizza_flavour} foi preparada.
 
   utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: Did that help you?
 
   utter_goodbye:
-  - text: "Bye"
+  - text: Adeus.
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: I am a bot, powered by Rasa.
+
+actions:
+- utter_pizza_slots
+- utter_submit
+- utter_greet
+- action_ask_pizza_size
 
 session_config:
   session_expiration_time: 60

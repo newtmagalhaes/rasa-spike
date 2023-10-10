@@ -1,24 +1,25 @@
 version: "3.1"
 
 rules:
-
-- rule: Active form
+- rule: Activate form
   steps:
-  - intent: greet
-  - action: utter_presentation
+  - intent: request_pizza
+  - action: utter_greet
   - action: pizza_form
   - active_loop: pizza_form
 
 - rule: Submit form
+  condition:
+  - active_loop: pizza_form
   steps:
-    condition:
-    - active_loop: pizza_form
-    steps:
-    - action: pizza_form
-    - active_loop: null
-    - slot_was_set:
-      - request_slot: null
-    - action: post_form
+  # deactivate form
+  - action: pizza_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # submit form data
+  - action: utter_submit
+  - action: utter_pizza_slots
 
 - rule: Handle interruption in form
   condition:

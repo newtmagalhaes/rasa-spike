@@ -2,29 +2,34 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+# happy path
+- story: User wants to buy a pizza
   steps:
-  - intent: greet
+  - intent: request_pizza
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: pizza_form
+  - active_loop: pizza_form
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - slot_was_set:
+    - requested_slot: pizza_size
+  - intent: give_pizza_size
+    entities:
+    - pizza_size: medium
+  - slot_was_set:
+    - pizza_size: medium
+  - action: pizza_form
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - slot_was_set:
+    - requested_slot: pizza_flavour
+  - intent: give_pizza_flavour
+    entities:
+    - pizza_flavour: pepperoni
+  - slot_was_set:
+    - pizza_flavour: pepperoni
+  - action: pizza_form
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_pizza_slots
