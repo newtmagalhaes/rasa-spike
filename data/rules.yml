@@ -21,6 +21,16 @@ rules:
   - action: utter_submit
   - action: utter_pizza_slots
 
+- rule: Handle fallbacks in form
+  condition:
+  - active_loop: pizza_form
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+  # return to form
+  - action: pizza_form
+  - active_loop: pizza_form
+
 - rule: Handle interruption in form
   condition:
   - active_loop: pizza_form

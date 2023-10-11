@@ -1,5 +1,4 @@
 version: '3.1'
-
 intents:
 - affirm
 - bot_challenge
@@ -9,11 +8,9 @@ intents:
 - goodbye
 - greet
 - request_pizza
-
 entities:
 - pizza_size
 - pizza_flavour
-
 slots:
   pizza_size:
     type: text
@@ -23,7 +20,6 @@ slots:
       entity: pizza_size
       conditions:
       - active_loop: pizza_form
-
   pizza_flavour:
     type: text
     influence_conversation: true
@@ -32,41 +28,33 @@ slots:
       entity: pizza_flavour
       conditions:
       - active_loop: pizza_form
-
 forms:
   pizza_form:
     required_slots:
     - pizza_size
     - pizza_flavour
-
 responses:
   utter_greet:
   - text: Olá! Eu estou aqui para registrar seu pedido.
-
   utter_ask_pizza_flavour:
   - text: Qual o sabor que gostaria em sua pizza?
-
   utter_submit:
   - text: Seu pedido foi enviado!
-
   utter_pizza_slots:
   - text: Sua pizza {pizza_size} de sabor {pizza_flavour} foi preparada.
-
   utter_did_that_help:
   - text: Did that help you?
-
+  utter_default:
+  - text: Desculpe, não entendi. Por favor repita a frase de uma forma mais clara
   utter_goodbye:
   - text: Adeus.
-
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-
 actions:
-- utter_pizza_slots
 - utter_submit
-- utter_greet
+- utter_pizza_slots
+- action_session_start
 - action_ask_pizza_size
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

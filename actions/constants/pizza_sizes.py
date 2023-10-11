@@ -8,3 +8,7 @@ PT_PIZZA_SIZES = [
     'média',
     'grande',
 ]
+PIZZA_BUTTONS = [
+    {"title": name, "payload": value}
+    for name, value in zip(PT_PIZZA_SIZES, PIZZA_SIZES)
+]

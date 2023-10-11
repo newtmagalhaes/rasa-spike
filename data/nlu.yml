@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -15,7 +14,6 @@ nlu:
     - eae cara
     - bomdia
     - salve
-
 - intent: goodbye
   examples: |
     - tchau
@@ -26,7 +24,6 @@ nlu:
     - tenha um bom dia
     - até breve
     - até logo
-
 - intent: affirm
   examples: |
     - sim
@@ -35,7 +32,6 @@ nlu:
     - claro
     - parece bom
     - correto
-
 - intent: deny
   examples: |
     - não
@@ -46,24 +42,21 @@ nlu:
     - não brinca
     - certamente não
     - discordo
-
 - intent: request_pizza
   examples: |
     - quero pedir uma pizza
-
+    - /request_pizza
 - intent: give_pizza_size
   examples: |
     - [small](pizza_size)
     - [medium](pizza_size)
     - [large](pizza_size)
-
 - intent: give_pizza_flavour
   examples: |
     - eu quero uma pizza de [marguerita](pizza_flavour)
     - [pepperoni](pizza_flavour)
     - pizza de [frango com requeijão](pizza_flavour)
     - eu quero uma pizza [metade frango e metade portuguesa](pizza_flavour)
-
 - intent: bot_challenge
   examples: |
     - você é um robô?
